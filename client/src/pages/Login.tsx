@@ -6,7 +6,7 @@ import { GoogleLogin } from '@react-oauth/google';
 
 const LoginSection = () =>{
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  
   return (
     <div className="p-5 bg-white md:flex-1">
           <h3 className="my-4 text-2xl font-semibold text-gray-700">
@@ -98,14 +98,7 @@ const LoginSection = () =>{
                 </a>
                 <span className="text-sm font-medium text-blue-500 group-hover:text-white">
 
-                  <GoogleLogin
-                    onSuccess={credentialResponse => {
-                      console.log(credentialResponse);
-                    }}
-                    onError={() => {
-                      console.log('Login Failed');
-                    }}
-                  />
+                
                   </span>
               </div>
             </div>
@@ -114,6 +107,9 @@ const LoginSection = () =>{
   )
 }
 const RegisterSection = () => {
+  const googleAuth = ()=>{
+    window.open('http://localhost:4000/auth/google','self');
+  }
   return (
     <div className="p-5 bg-white md:flex-1">
       <h3 className="my-4 text-2xl font-semibold text-gray-700">
@@ -221,17 +217,10 @@ const RegisterSection = () => {
                 Github
               </span>
             </a>
-            <span className="text-sm font-medium text-blue-500 group-hover:text-white">
+            <button className="text-sm font-medium text-blue-500 group-hover:text-white" onClick={googleAuth}>
 
-              <GoogleLogin
-                onSuccess={credentialResponse => {
-                  console.log(credentialResponse);
-                }}
-                onError={() => {
-                  console.log('Login Failed');
-                }}
-              />
-              </span>
+              google login
+              </button>
           </div>
         </div>
       </form>
